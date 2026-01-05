@@ -1,0 +1,122 @@
+[
+  {
+    "id": "RPT-101",
+    "kaynak": "HUMINT (Yerel)",
+    "baslik": "Köyde Yabancı Hareketliliği",
+    "metin": "Sınıra 3 km mesafedeki Çakıllı Köyü'nde, köylülerin tanımadığı 3 şahsın 'hayvan tüccarı' kılığında dolaştığı ve özellikle Karakol yolunun durumunu sorduğu rapor edildi.",
+    "guvenilirlik": 3,
+    "zaman": "2025-12-18T14:30:00"
+  },
+  {
+    "id": "RPT-102",
+    "kaynak": "SIGINT",
+    "baslik": "Şifreli Haberleşme Testi",
+    "metin": "Bölgede daha önce kullanılmayan 446.000 MHz frekansında, çok kısa süreli (burst) ve yüksek şifreli veri paketleri tespit edildi. Sinyal kaynağı Kuzey Vadisi.",
+    "guvenilirlik": 5,
+    "zaman": "2025-12-18T23:15:00"
+  },
+  {
+    "id": "RPT-103",
+    "kaynak": "IHA",
+    "baslik": "Termal İz - Sektör A",
+    "metin": "Gece uçuşunda, Kuzey Vadisi derinliklerinde, sık ağaçlık alanda 2 adet tekil ısı kaynağı tespit edildi. Hareketsizler, gözcü oldukları değerlendiriliyor.",
+    "guvenilirlik": 4,
+    "zaman": "2025-12-19T02:45:00"
+  },
+  {
+    "id": "RPT-104",
+    "kaynak": "Devriye",
+    "baslik": "Tel Örgü Tahribatı",
+    "metin": "Sınır hattı 34. kilometrede tellerin profesyonelce kesildiği ve tekrar bağlanarak gizlendiği fark edildi. Geçişin en az 24 saat önce yapıldığı tahmin ediliyor.",
+    "guvenilirlik": 5,
+    "zaman": "2025-12-19T08:00:00"
+  },
+  {
+    "id": "RPT-105",
+    "kaynak": "OSINT (Sosyal Medya)",
+    "baslik": "Propaganda Paylaşımı",
+    "metin": "Örgüte yakın bir Telegram kanalında 'Fırtına yaklaşıyor' başlığıyla, bölgedeki Kartal Tepesi'ne benzeyen bir silüetin fotoğrafı paylaşıldı.",
+    "guvenilirlik": 2,
+    "zaman": "2025-12-19T10:30:00"
+  },
+  {
+    "id": "RPT-106",
+    "kaynak": "HUMINT (Muhbir 'Atmaca')",
+    "baslik": "Lojistik Teslimat",
+    "metin": "Gri renkli, kasası kapalı bir ticari aracın (Doblo tarzı) gece yarısı orman yoluna girdiği ve ağır kutular indirdiği görüldü. Araç plakası çamurla kapatılmış.",
+    "guvenilirlik": 4,
+    "zaman": "2025-12-19T23:50:00"
+  },
+  {
+    "id": "RPT-107",
+    "kaynak": "SIGINT",
+    "baslik": "Sinyal Sessizliği (Radio Silence)",
+    "metin": "Son 4 saattir bölgedeki olağan telsiz trafiği tamamen kesildi. Bu durum genellikle büyük bir eylem öncesi disiplinli bir sessizliğe (EMCON) işaret eder.",
+    "guvenilirlik": 5,
+    "zaman": "2025-12-20T04:00:00"
+  },
+  {
+    "id": "RPT-108",
+    "kaynak": "IHA",
+    "baslik": "Anomali Tespiti - Sektör B (Yanıltma?)",
+    "metin": "Asıl hedef olduğu düşünülen Kartal Tepesi'nin tam zıttı yöndeki (Güney Ovası) çalılıklarda 3-4 noktada küçük çaplı yangınlar başladı. Dikkat dağıtma amaçlı olabilir.",
+    "guvenilirlik": 4,
+    "zaman": "2025-12-20T14:15:00"
+  },
+  {
+    "id": "RPT-109",
+    "kaynak": "Devriye",
+    "baslik": "Mühimmat Buluntusu",
+    "metin": "Kuzey Vadisi girişinde, RPT-106'da bahsedilen araç izlerine yakın bir noktada, düşürülmüş bir Rus menşeli RPG-7 mühimmat kapağı bulundu.",
+    "guvenilirlik": 5,
+    "zaman": "2025-12-20T16:00:00"
+  },
+  {
+    "id": "RPT-110",
+    "kaynak": "HUMINT (Sorgu)",
+    "baslik": "Yakalanan Kaçakçı İfadesi",
+    "metin": "Sınırda yakalanan sigara kaçakçısı: 'Bu gece vadiden uzak durun, büyük abiler orada, ağır silahları var, roket atacaklar' şeklinde ifade verdi.",
+    "guvenilirlik": 3,
+    "zaman": "2025-12-20T18:30:00"
+  },
+  {
+    "id": "RPT-111",
+    "kaynak": "Radar",
+    "baslik": "Düşük İrtifa Uçuşu",
+    "metin": "Sınırın karşı tarafından kalkan ve tanımlanamayan mini İHA (Drone) tespit edildi. Kartal Tepesi üzerinde 5 dakika keşif yapıp geri döndü.",
+    "guvenilirlik": 5,
+    "zaman": "2025-12-20T19:45:00"
+  },
+  {
+    "id": "RPT-112",
+    "kaynak": "SIGINT",
+    "baslik": "Kodlu Emir: 'Düğün Başlasın'",
+    "metin": "446.000 MHz frekansında sessizlik bozuldu. Tek bir anons geçildi: 'Misafirler geldi, düğün 22:00'de başlıyor.'",
+    "guvenilirlik": 5,
+    "zaman": "2025-12-20T20:10:00"
+  },
+  {
+    "id": "RPT-113",
+    "kaynak": "Gözcü (Kule)",
+    "baslik": "Görsel Temas",
+    "metin": "Termal kameralar, üs bölgesinin 600 metre kuzeyindeki kayalık alanda sürünerek yaklaşan 4-5 kişilik bir grup tespit etti.",
+    "guvenilirlik": 5,
+    "zaman": "2025-12-20T21:30:00"
+  },
+  {
+    "id": "RPT-114",
+    "kaynak": "Yerel Yönetim",
+    "baslik": "Elektrik Kesintisi",
+    "metin": "Karakolun enerji nakil hattını besleyen trafoda patlama oldu. Bölge karanlığa gömüldü. Sabotaj ihtimali yüksek.",
+    "guvenilirlik": 5,
+    "zaman": "2025-12-20T21:45:00"
+  },
+  {
+    "id": "RPT-115",
+    "kaynak": "Telsiz Dinleme",
+    "baslik": "Panik Konuşmaları",
+    "metin": "Karşı tarafın telsizinde 'Roketçi yerini aldı, makineli destek bekliyor' ifadesi açıkça duyuldu.",
+    "guvenilirlik": 5,
+    "zaman": "2025-12-20T21:50:00"
+  }
+] 
