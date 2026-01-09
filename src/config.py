@@ -2,60 +2,77 @@ import os
 from dotenv import load_dotenv
 
 # ==========================================
-# 1. TEMEL DOSYA YOLU AYARLARI (PATH SETUP)
+# 1. TEMEL DOSYA YOLU AYARLARI
 # ==========================================
-# Bu dosya 'src' içinde olduğu için proje ana dizinini bulmak adına bir üst dizine çıkıyoruz.
-src_dir = os.path.dirname(os.path.abspath(__file__))  # .../src
-root_dir = os.path.dirname(src_dir)                 # .../ (Proje Ana Dizini)
-env_path = os.path.join(root_dir, '.env')           # .../.env
+src_dir = os.path.dirname(os.path.abspath(__file__))
+root_dir = os.path.dirname(src_dir)
+env_path = os.path.join(root_dir, '.env')
 
 # ==========================================
-# 2. ORTAM DEĞİŞKENLERİNİ YÜKLEME (.ENV)
+# 2. .ENV YÜKLEME
 # ==========================================
 if os.path.exists(env_path):
     load_dotenv(dotenv_path=env_path)
 else:
-    print(f"UYARI: .env dosyası şu konumda bulunamadı: {env_path}")
+    print(f"UYARI: .env dosyası bulunamadı: {env_path}")
 
 # ==========================================
-# 3. API VE MODEL AYARLARI
+# 3. API VE MODEL AYARLARI (TÜM VARYASYONLAR)
 # ==========================================
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
-# Kritik Hata Kontrolü
 if not GEMINI_API_KEY:
-    raise ValueError(
-        f"KRİTİK HATA: 'GEMINI_API_KEY' bulunamadı!\n"
-        f"Lütfen '{env_path}' dosyasını kontrol edin ve anahtarın doğru yazıldığından emin olun."
-    )
+    raise ValueError(f"KRİTİK HATA: 'GEMINI_API_KEY' {env_path} içinde bulunamadı!")
 
-MODEL_NAME = "gemini-1.5-flash"  # Hız ve maliyet için flash, kalite için 'gemini-1.5-pro'
-TEMPERATURE = 0.3                # 0: Deterministik (Sabit), 1: Yaratıcı
+# --- API ANAHTARI EŞANLAMLILARI ---
+API_ANAHTARI = GEMINI_API_KEY  
+API_KEY = GEMINI_API_KEY      
 
-# ==========================================
-# 4. VERİTABANI VE DOSYA YOLU SABİTLERİ
-# ==========================================
-# SQLite Veritabanı Yolu
-DB_PATH = os.path.join(root_dir, 'data', 'istihbarat.db')
+# --- MODEL İSMİ EŞANLAMLILARI ---
+MODEL_ISMI = "gemini-2.0-flash" 
+MODEL_NAME = MODEL_ISMI 
+MODEL = MODEL_ISMI
 
-# Vektör Veritabanı (FAISS) Yolu
-VECTOR_DB_FOLDER = os.path.join(root_dir, 'vector_db', 'faiss_indeksi')
-VECTOR_DB_FILE = os.path.join(VECTOR_DB_FOLDER, 'faiss.index')
-
-# Ham Veri Klasörü (PDF, JSON vb. dosyaların olduğu yer)
-RAW_DATA_PATH = os.path.join(root_dir, 'data', 'raw')
+TEMPERATURE = 0.3
 
 # ==========================================
-# 5. RAG (RETRIEVAL) PARAMETRELERİ
+# 4. VERİTABANI VE DOSYA YOLLARI
 # ==========================================
-CHUNK_SIZE = 1000        # Metin kaça karakterlik parçalara bölünecek?
-CHUNK_OVERLAP = 200      # Parçalar arasında ne kadar örtüşme olacak? (Bağlam kopmaması için)
-TOP_K_RETRIEVAL = 5      # LLM'e gönderilecek en alakalı kaç parça seçilsin?
+VERITABANI_YOLU = os.path.join(root_dir, 'data', 'istihbarat.db')
+DB_PATH = VERITABANI_YOLU
+
+HAM_VERI_YOLU = os.path.join(root_dir, 'data', 'raw')
+RAW_DATA_PATH = HAM_VERI_YOLU
+
+# --- VEKTÖR VERİTABANI ---
+VEKTOR_DB_KLASORU = os.path.join(root_dir, 'vector_db', 'faiss_indeksi')
+
+# Eşanlamlılar
+VEKTOR_DIZINI = VEKTOR_DB_KLASORU
+VECTOR_DB_FOLDER = VEKTOR_DB_KLASORU
+VEKTOR_KLASORU = VEKTOR_DB_KLASORU
+
+VEKTOR_DB_DOSYASI = os.path.join(VEKTOR_DB_KLASORU, 'faiss.index')
+VEKTOR_DOSYASI = VEKTOR_DB_DOSYASI
+VECTOR_DB_FILE = VEKTOR_DB_DOSYASI
 
 # ==========================================
-# 6. ANALİZ RAPORU ŞABLONU (PROMPT)
+# 5. RAG PARAMETRELERİ
 # ==========================================
-REPORT_TEMPLATE = """
+PARCA_BOYUTU = 1000          
+CHUNK_SIZE = PARCA_BOYUTU
+
+PARCA_CAKISMA_MIKTARI = 200  
+CHUNK_OVERLAP = PARCA_CAKISMA_MIKTARI
+
+EN_IYI_SONUC_SAYISI = 5         
+GETIRILECEK_DOKUMAN_SAYISI = EN_IYI_SONUC_SAYISI
+TOP_K = EN_IYI_SONUC_SAYISI
+
+# ==========================================
+# 6. ANALİZ RAPORU ŞABLONU VE BÖLÜMLERİ
+# ==========================================
+RAPOR_SABLONU = """
 Sen devlet düzeyinde çalışan uzman bir istihbarat analistisin. 
 Aşağıda sağlanan "Bağlam" (Context) içerisindeki bilgileri kullanarak, sorulan "Soru"ya (Question) 
 net, kanıta dayalı ve profesyonel bir yanıt ver.
@@ -67,10 +84,23 @@ net, kanıta dayalı ve profesyonel bir yanıt ver.
 Soru: {question}
 
 Yanıtlama Kuralları:
-1. Sadece yukarıdaki bağlamda verilen bilgilere dayan. Dışarıdan bilgi uydurma (Halüsinasyon görme).
-2. Eğer bağlamda sorunun cevabı yoksa, dürüstçe "Verilen belgelerde bu bilgi bulunmamaktadır." de.
-3. Cevabını maddeler halinde (bullet points) yapılandır.
-4. Tonun resmi, objektif ve analitik olsun.
+1. Sadece yukarıdaki bağlamda verilen bilgilere dayan.
+2. Bilgi yoksa uydurma.
+3. Yanıtı maddeler halinde yaz.
 
 Analiz Raporu:
 """
+
+ANALIZ_SABLONU = RAPOR_SABLONU
+REPORT_TEMPLATE = RAPOR_SABLONU
+PROMPT_SABLONU = RAPOR_SABLONU
+
+# --- HATA VEREN KISIM İÇİN EKLENDİ ---
+# analyzer.py içindeki döngü için gerekli liste:
+RAPOR_BOLUMLERI = [
+    "Yönetici Özeti",
+    "Ana Bulgular",
+    "Detaylı Analiz",
+    "Olası Riskler",
+    "Öneriler ve Sonuç"
+]
